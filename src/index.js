@@ -66,9 +66,9 @@ function App() {
   });
   render(
     <LDProvider>
-      <YourApp />
+      <App />
     </LDProvider>,
-    document.getElementById('reactDiv'),
+    document.getElementById('root'),
   );
 })();
 
