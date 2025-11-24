@@ -12,7 +12,7 @@ let id = getUserId();
 
 (async () => {
   const LDProvider = await asyncWithLDProvider({    
-    clientSideID: process.env.launchdarkly-client-key,
+    clientSideID: process.env.launchdarkly_client_key,
     user: {
       key: id,
       custom: {
