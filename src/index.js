@@ -31,16 +31,6 @@ let id = getUserId();
 //   document.getElementById('root')
 // );
 // })();
-function App() {
-  const ldClient = useLDClient();
-
-  useEffect(() => {
-    // Tracking your memberId lets us know you are connected.
-    ldClient?.track(process.env.launchdarkly_client_key);
-  }, [ldClient]);
-
-  return <div>Let your feature flags fly!</div>
-}
 
 (async () => {
   const LDProvider = await asyncWithLDProvider({

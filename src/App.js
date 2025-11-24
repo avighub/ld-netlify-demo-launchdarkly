@@ -7,13 +7,16 @@ import ld from "./ld-white-wide.png";
 import Adbanner from "./components/adbanner";
 
 function App() {
+  const ldClient = useLDClient();
   const { login, bgstyle, qrcode, apidebug } = useFlags();
   const [bg, setbg] = React.useState('./ld-bg.png');
 
   useEffect(() => {
+     // Tracking your memberId lets us know you are connected.
+    ldClient?.track(process.env.launchdarkly_client_key);
     console.log("update to bg detected");
     setbg(bgstyle);
-  }, [bgstyle]);
+  }, [bgstyle,ldClient]);
 
   console.log(bgstyle);
 
