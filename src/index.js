@@ -9,50 +9,49 @@ import reportWebVitals from './reportWebVitals';
 
 let id = getUserId();
 
+(async () => {
+  const LDProvider = await asyncWithLDProvider({
+    clientSideID: process.env.launchdarkly_client_key,
+    user: {
+      key: id,
+      custom: {
+        device: deviceType,
+        operatingSystem: osName,
+      },
+    },
+  }
+  );
+
+ReactDOM.render(
+  <LDProvider>
+    <App />
+  </LDProvider>,
+
+  document.getElementById('root')
+);
+})();
 
 // (async () => {
 //   const LDProvider = await asyncWithLDProvider({
 //     clientSideID: process.env.launchdarkly_client_key,
-//     user: {
-//       key: id,
+//     context: {
+//       "kind": "user",
+//       "key": id,
+//       "name": "Sandy Smith",
+//       "email": "sandy@example.com",
 //       custom: {
 //         device: deviceType,
 //         operatingSystem: osName,
-//       },
-//     },
-//   }
+//       }
+//     }
+//   });
+//   render(
+//     <LDProvider>
+//       <App />
+//     </LDProvider>,
+//     document.getElementById('root'),
 //   );
-
-// ReactDOM.render(
-//   <LDProvider>
-//     <App />
-//   </LDProvider>,
-
-//   document.getElementById('root')
-// );
 // })();
-
-(async () => {
-  const LDProvider = await asyncWithLDProvider({
-    clientSideID: process.env.launchdarkly_client_key,
-    context: {
-      "kind": "user",
-      "key": id,
-      "name": "Sandy Smith",
-      "email": "sandy@example.com",
-      custom: {
-        device: deviceType,
-        operatingSystem: osName,
-      }
-    }
-  });
-  render(
-    <LDProvider>
-      <App />
-    </LDProvider>,
-    document.getElementById('root'),
-  );
-})();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
