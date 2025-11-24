@@ -44,14 +44,6 @@ let id = getUserId();
         device: deviceType,
         operatingSystem: osName,
       }
-    },
-    options: {
-      // the observability plugins require React Web SDK v3.7+
-      plugins: [
-        new Observability(),
-        new SessionReplay()
-      ],
-      // other options...
     }
   });
   render(
